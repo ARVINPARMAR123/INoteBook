@@ -1,0 +1,27 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "99982b3f-da27-40a2-b976-6d068d22feca",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1764336003559"
+        }
+      },
+      "favorite": {
+        "name": "arvin.wtvusze.mongodb.net",
+        "color": "color1"
+      },
+      "savedConnectionType": "favorite",
+      "connectionOptions": {
+        "connectionString": "mongodb+srv://arvinp498:ArvinParmar123@arvin.wtvusze.mongodb.net/",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjoxLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}
