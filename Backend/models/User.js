@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-    name: { // Changed Name to name
+    name: { 
         type: String,
         required: true
     },
-    email: { // Changed Email to email
+    email: { 
         type: String,
         required: true,
         unique: true
     },
-    password: { // Changed Password to password
+    password: { 
         type: String,
         required: true
     },
@@ -21,4 +21,6 @@ const UserSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+User.createIndexes();
+module.exports = User;
