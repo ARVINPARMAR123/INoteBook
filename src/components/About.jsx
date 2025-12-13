@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react';
 
-export default function About() {
+const About = () => {
   return (
     <div>
-      This is About Component
+      This is About Page!
     </div>
   )
 }
+export default About;
