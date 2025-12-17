@@ -21,7 +21,7 @@ function App() {
           <Alert message="This is an alert message!" />
           <div className='container'>
             <Routes>                
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
             </Routes>
           </div>
