@@ -1,10 +1,10 @@
 import Notes from './Notes';
 import ErrorBoundary from './ErrorBoundary';
 
-const Home = () => { 
+const Home = ({showAlert}) => { 
   return (
       <ErrorBoundary>
-        <Notes/>
+        <Notes showAlert={showAlert} />
       </ErrorBoundary>
   )};
 

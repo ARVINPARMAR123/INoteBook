@@ -10,24 +10,44 @@ import Home from './components/Home';
 import About from './components/About';
 import NoteState from './context/notes/NoteState';
 import Alert from './components/Alert';
+import ErrorBoundary from './components/ErrorBoundary';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import { useState } from 'react';
 
-function App() {
-  
+import HomePage from './components/HomePage';
+
+const App = () => {
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null)
+    },1500);
+  }
+
+
   return (
     <>
       <NoteState>
         <Router>
           <Navbar />
-          <Alert message="This is an alert message!" />
+            <Alert alert={alert} />
           <div className='container'>
-            <Routes>                
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} /> 
-            </Routes>
+            <ErrorBoundary>
+              <Routes>     
+                <Route path="/" element={<HomePage />} />           
+                <Route path="/home" element={<Home showAlert={showAlert} />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/login" element={<Login showAlert={showAlert} />} />
+                <Route path="/signup" element={<SignUp showAlert={showAlert} />} /> 
+              
+              </Routes>
+            </ErrorBoundary>
           </div>
           </Router>
       </NoteState>

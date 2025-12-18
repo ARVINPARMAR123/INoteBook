@@ -1,7 +1,7 @@
 import {useState}from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [credentials, setCredentials] = useState({name: "", email: "", password: "", cpassword: ""});
     const host = "http://localhost:5000";
     let navigate = useNavigate();
@@ -21,7 +21,10 @@ const SignUp = () => {
         if(json.success){
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
-            navigate("/");
+            navigate("/home");
+            props.showAlert("Account created Successfully", "success")
+        }else{
+          props.showAlert("Invalid details", "danger")
         }
     }
 
@@ -30,29 +33,76 @@ const SignUp = () => {
     }
 
   return (
-    <div className='container mt-3'>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3 htmlForm-check">
-          <label className="htmlForm-check-label" htmlFor="name">UserName</label>
-          <input type="text" className="htmlForm-check-input" id="name" name='name' onChange={onchange} />
+
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6 col-lg-5">
+
+          <h2 className="text-center mb-4">
+            Create an account use to iNoteBook
+          </h2>
+
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                onChange={onchange}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                onChange={onchange}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                minLength={5}
+                required
+                onChange={onchange}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="cpassword" className="form-label">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="cpassword"
+                name="cpassword"
+                minLength={5}
+                required
+                onChange={onchange}
+              />
+            </div>
+
+            <button type="submit" className="btn btn-primary w-100">
+              Submit
+            </button>
+
+          </form>
 
         </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="htmlForm-label">Email</label>
-          <input type="email" className="htmlForm-control" id="email" name='email' aria-describedby="emailHelp" onChange={onchange} />
-
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="htmlForm-label">Password</label>
-          <input type="password" className="htmlForm-control" id="password" name='password' onChange={onchange} minLength={5} required />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="cpassword" className="htmlForm-label">Confirm Password</label>
-          <input type="password" className="htmlForm-control" id="cpassword" onChange={onchange} minLength={5} required />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      </div>
     </div>
+  
   )
 }
 

@@ -3,13 +3,20 @@ import NoteContext from "../context/notes/noteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 //import EditNote from "./EditNote";
+import { useNavigate } from 'react-router-dom';
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(NoteContext);
   const { notes, getNotes, editNote } = context;
+  let navigate = useNavigate();
 
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    } else {
+      props.showAlert("Please login to access your notes", "warning");
+      navigate('/login');
+    }
   }, []);
 
   const ref = useRef(null);
@@ -26,6 +33,7 @@ const Notes = () => {
         refClose.current.click();
         editNote(note.id, note.etitle, note.edescription, note.etag);
         console.log("Updated Note",note);
+        props.showAlert("Note is being edited Successfully", "success");
     }
 
     const onchange = (e) => {
@@ -34,7 +42,7 @@ const Notes = () => {
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={props.showAlert} />
       {/* <EditNote /> */}
 
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal</button>
@@ -82,7 +90,7 @@ const Notes = () => {
         {/* {Array.isArray(notes) && notes.map((note) => (<NoteItem key={note._id} note={note}/>))} */}
         {notes &&
           notes.map((note) => (
-            <NoteItem key={note._id} updateNote={updateNote} note={note} />
+            <NoteItem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
           ))}
 
       </div>
