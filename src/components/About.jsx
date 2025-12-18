@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react';
 const About = () => {
   return (
     <div>
-      This is About Page!
+      <h2>This is About Page!</h2>
     </div>
   )
 }

@@ -16,10 +16,11 @@ router.post('/createuser', [
     body('password', 'Password must be at least 5 characters').isLength({ min: 5 }),
 ], async (req, res) => { // Added 'async'
         console.log(req.body);
+        let success = false;
         
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ success, errors: errors.array() });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -43,9 +44,8 @@ router.post('/createuser', [
                 }
             }
             const authtoken = jwt.sign(data, JWT_SECRET);
-            //console.log(jwtData);
-
-            res.json({authtoken});
+            success = true;
+            res.json({success, authtoken});
             //res.json(user);
         }
 
@@ -61,6 +61,7 @@ router.post('/login', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').exists(),
 ], async (req, res) => {
+    let success = false;
     const errors = validationResult(req);
     
     // If there are validation errors, return Bad request and the errors
@@ -78,7 +79,8 @@ router.post('/login', [
         // Compare the provided password with the hashed password in the database
         const passwordCompare = await bcrypt.compare(password, user.password);
         if(!passwordCompare){
-            return res.status(400).json({error: "Please try to login with correct credentials"});
+            success = false;
+            return res.status(400).json({success, error: "Please try to login with correct credentials"});
         }
         const data = {
             user: {
@@ -87,7 +89,9 @@ router.post('/login', [
         }
         // Generate JWT token
         const authtoken = jwt.sign(data, JWT_SECRET);
-        res.json({authtoken});
+        success = true;
+        res.json({success,authtoken});
+
     // Catch any other errors
     }catch (error) {
         console.error(error.message);

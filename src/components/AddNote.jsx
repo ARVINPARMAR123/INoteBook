@@ -26,12 +26,12 @@ const AddNote = () => {
         <form className='my-3' onSubmit={handleSubmit}>      
           <div className="mb-3">
             <label htmlFor="title" className="form-label">Title</label>
-            <input type="text" className="form-control" id="title" name="title" value={note.title} placeholder="Enter Note Title" onChange={onchange}/>
+            <input type="text" className="form-control" id="title" name="title" value={note.title} placeholder="Enter Note Title" minLength={5} onChange={onchange}/>
           </div>
 
           <div className="mb-3">
             <label htmlFor="description" className="form-label">Description</label>
-            <textarea className="form-control" id="description" name="description" rows="3" value={note.description} onChange={onchange}></textarea>
+            <textarea className="form-control" id="description" name="description" rows="3" value={note.description} minLength={5} onChange={onchange}></textarea>
           </div>
 
           <div className="mb-3">
@@ -39,7 +39,7 @@ const AddNote = () => {
             <input type='text' className="form-control" id="tag" name="tag" rows="3" placeholder="General" value={note.tag} onChange={onchange}/>
           </div>
         
-          <button type='submit' className='btn btn-primary'>Add Note</button>
+          <button disabled={note.title.length<5 || note.description.length<5} type='submit' className='btn btn-primary'>Add Note</button>
         </form>
       </div>
     </>

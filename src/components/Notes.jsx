@@ -52,23 +52,23 @@ const Notes = () => {
               <form className='my-3' onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">Title</label>
-                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} placeholder="Enter Note Title" onChange={onchange} />
+                  <input type="text" className="form-control" id="etitle" name="etitle" value={note.etitle} placeholder="Enter Note Title" minLength={5} onChange={onchange} />
                 </div>
 
                 <div className="mb-3">
                   <label htmlFor="description" className="form-label">Description</label>
-                  <textarea className="form-control" id="edescription" name="edescription" rows="3" value={note.edescription} onChange={onchange}></textarea>
+                  <textarea className="form-control" id="edescription" name="edescription" rows="3" value={note.edescription} minLength={5} onChange={onchange}></textarea>
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="tag" className="form-label" placeholder="General">Tag</label>
-                  <input type='text' className="form-control" id="etag" name="etag" rows="3" value={note.etag} onChange={onchange} />
+                  <label htmlFor="tag" className="form-label" >Tag</label>
+                  <input type='text' className="form-control" id="etag" name="etag" rows="3" placeholder="General" value={note.etag} onChange={onchange} />
                 </div>
               </form>
             </div>
             <div className="modal-footer">
               <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={handleSubmit}>Update Note</button>
+              <button disabled={note.etitle.length<5 || note.edescription.length<5} type="button" className="btn btn-primary" onClick={handleSubmit}>Update Note</button>
             </div>
           </div>
         </div>
