@@ -47,10 +47,10 @@ const About = () => {
         </p>
         <p>
           We only use your contact details to respond to your messages. We
-          never share your data with third parties without your consent.:contentReference
+          never share your data with third parties without your consent.
         </p>
         <p>
-          **Contact for privacy concerns:** support@inotebook.app
+          For privacy concerns, contact us at: <strong>support@inotebook.app</strong>
         </p>
       </section>
     </div>

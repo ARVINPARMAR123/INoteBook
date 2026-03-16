@@ -1,16 +1,56 @@
-# React + Vite
+# iNotebook (MERN)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is split into two clear apps:
 
-Currently, two official plugins are available:
+- `Backend/` -> Express + MongoDB API
+- `Client/` -> React + Vite frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Folder Structure
 
-## React Compiler
+```text
+INoteBook/
+|-- Backend/
+|   |-- index.js
+|   |-- db.js
+|   |-- models/
+|   |-- routes/
+|   `-- package.json
+|-- Client/
+|   |-- src/
+|   |-- public/
+|   |-- index.html
+|   |-- vite.config.js
+|   `-- package.json
+`-- package.json
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup
 
-## Expanding the ESLint configuration
+Install dependencies for workspace and apps:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm install --prefix Backend
+npm install --prefix Client
+```
+
+## Run
+
+From repo root:
+
+```bash
+npm run dev
+```
+
+This starts:
+
+- Backend API on `http://localhost:5000`
+- Frontend app on `http://localhost:5173`
+
+## Useful Scripts (root)
+
+- `npm run dev` -> run backend + frontend together
+- `npm run dev:backend` -> run backend only
+- `npm run dev:client` -> run frontend only
+- `npm run build` -> build frontend
+- `npm run lint` -> lint frontend

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 const Navbar = () => {
     let location = useLocation();
     let navigate = useNavigate();
+    const isLoggedIn = Boolean(localStorage.getItem('token'));
 
     useEffect(() => {
         // Google Analytics
@@ -14,9 +15,9 @@ const Navbar = () => {
   return (
     <>
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark app-navbar">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">iNoteBook</Link>
+                <Link className="navbar-brand app-brand" to="/">iNoteBook</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -28,15 +29,20 @@ const Navbar = () => {
                     <li className="nav-item">
                     <Link className={`nav-link ${location.pathname === "/about"? "active" : ""}`} to="/about">About</Link>
                     </li>
+                    {isLoggedIn && (
+                    <li className="nav-item">
+                    <Link className={`nav-link ${location.pathname === "/profile"? "active" : ""}`} to="/profile">Profile</Link>
+                    </li>
+                    )}
                 </ul>
-                {!localStorage.getItem('token')?
+                {!isLoggedIn?
                 <form className="d-flex" role="search">
-                    <Link className={`btn ${location.pathname === "/login"? "active" : ""} btn-primary mx-1`} to="/login" role="button">Login</Link>
-                    <Link className={`btn ${location.pathname === "/signup"? "active" : ""} btn-primary mx-1`} to="/signup" role="button">Sign Up</Link>
+                    <Link className={`btn ${location.pathname === "/login"? "active" : ""} btn-outline-light mx-1`} to="/login" role="button">Login</Link>
+                    <Link className={`btn ${location.pathname === "/signup"? "active" : ""} btn-light mx-1`} to="/signup" role="button">Sign Up</Link>
                 </form>:<button onClick={()=>{
                     localStorage.removeItem('token');
                     navigate('/');
-                }} className="btn btn-primary">Logout</button>}
+                }} className="btn btn-light">Logout</button>}
                 </div>
             </div>
             </nav>

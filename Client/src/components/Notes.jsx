@@ -8,16 +8,17 @@ import { useNavigate } from 'react-router-dom';
 const Notes = (props) => {
   const context = useContext(NoteContext);
   const { notes, getNotes, editNote } = context;
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const { showAlert } = props;
 
   useEffect(() => {
     if(localStorage.getItem('token')){
       getNotes();
     } else {
-      props.showAlert("Please login to access your notes", "warning");
+      showAlert("Please login to access your notes", "warning");
       navigate('/login');
     }
-  }, []);
+  }, [getNotes, navigate, showAlert]);
 
   const ref = useRef(null);
   const refClose = useRef(null);
@@ -29,11 +30,11 @@ const Notes = (props) => {
     setNote({id: note._id, etitle: note.title, edescription: note.description, etag: note.tag});
   };
 
-  const handleSubmit = (e) => {
+    const handleSubmit = () => {
         refClose.current.click();
         editNote(note.id, note.etitle, note.edescription, note.etag);
         console.log("Updated Note",note);
-        props.showAlert("Note is being edited Successfully", "success");
+      showAlert("Note is being edited Successfully", "success");
     }
 
     const onchange = (e) => {
@@ -42,7 +43,7 @@ const Notes = (props) => {
 
   return (
     <>
-      <AddNote showAlert={props.showAlert} />
+      <AddNote showAlert={showAlert} />
       {/* <EditNote /> */}
 
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal</button>
@@ -52,9 +53,7 @@ const Notes = (props) => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Edit Note</h5>
-              <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
               <form className='my-3' onSubmit={handleSubmit}>
@@ -82,17 +81,22 @@ const Notes = (props) => {
         </div>
       </div>
 
-      <div className="row my-3">
-        <h2>Your Notes</h2>
-        <div className="container mx-3 fs-4">
-        {notes.length === 0 && 'No notes in Database!'}
+      <div className="my-3">
+        <div className="notes-page-header mb-3">
+          <h2>Your Notes</h2>
+          <span className="badge bg-primary">{notes.length} note{notes.length !== 1 ? 's' : ''}</span>
         </div>
-        {/* {Array.isArray(notes) && notes.map((note) => (<NoteItem key={note._id} note={note}/>))} */}
-        {notes &&
-          notes.map((note) => (
-            <NoteItem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
-          ))}
-
+        {notes.length === 0 && (
+          <div className="empty-notes">
+            <p>📭 No notes yet. Add your first note above!</p>
+          </div>
+        )}
+        <div className="row g-3">
+          {notes &&
+            notes.map((note) => (
+              <NoteItem key={note._id} updateNote={updateNote} showAlert={showAlert} note={note} />
+            ))}
+        </div>
       </div>
 
     </>

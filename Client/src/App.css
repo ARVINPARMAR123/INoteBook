@@ -1,0 +1,551 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ============================
+   PAGE LAYOUT — sticky footer
+============================ */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+}
+
+.app-shell {
+  padding-top: 1.25rem;
+  padding-bottom: 2.5rem;
+}
+
+.app-navbar {
+  border-bottom: 1px solid #333;
+}
+
+.app-brand {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.app-navbar .nav-link {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.app-navbar .nav-link.active,
+.app-navbar .nav-link:hover {
+  color: #fff;
+}
+
+/* ============================
+   HOMEPAGE
+============================ */
+.home-container {
+  padding: 0;
+}
+
+.hero-section {
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 72px 24px 60px;
+  border-radius: 14px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #e0eaff;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.hero-section .brand {
+  color: #60aeff;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  background: #007bff;
+  color: #fff;
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.hero-btn-primary:hover {
+  background: #0056b3;
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  color: #fff;
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Features */
+.features-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.features-section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.features-subtitle {
+  color: #777;
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.features-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  text-align: left;
+}
+
+.feature-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  padding: 22px 20px;
+  border-radius: 12px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.feature-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.feature-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* How it works */
+.how-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 40px 24px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.how-section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 32px;
+}
+
+.how-steps {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.how-step {
+  flex: 1;
+  min-width: 160px;
+  max-width: 220px;
+}
+
+.step-number {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #007bff;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.how-step h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.how-step p {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+
+.how-step-arrow {
+  font-size: 1.6rem;
+  color: #007bff;
+  padding-top: 10px;
+  line-height: 46px;
+}
+
+/* CTA banner */
+.cta-section {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border-radius: 14px;
+  padding: 52px 24px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.cta-section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 26px;
+}
+
+.cta-section .hero-btn-primary {
+  background: #fff;
+  color: #007bff;
+  font-size: 1rem;
+  padding: 13px 34px;
+}
+
+.cta-section .hero-btn-primary:hover {
+  background: #f0f4ff;
+  color: #0056b3;
+}
+
+/* ============================
+   NOTES PAGE
+============================ */
+.notes-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.notes-page-header h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.empty-notes {
+  background: #fff;
+  border: 1px dashed #ccc;
+  border-radius: 12px;
+  padding: 40px 24px;
+  text-align: center;
+  color: #888;
+  margin: 12px 0 20px;
+  font-size: 1rem;
+}
+
+.empty-notes p {
+  margin: 0;
+}
+
+.note-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+}
+
+.note-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.note-tag {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a73e8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  align-self: flex-start;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.note-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.note-desc {
+  font-size: 0.85rem;
+  color: #666;
+  flex: 1;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.55;
+}
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+}
+
+.note-btn {
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background 0.15s;
+}
+
+.note-btn-delete {
+  background: #fff1f1;
+  color: #d93025;
+}
+
+.note-btn-delete:hover {
+  background: #ffe0de;
+}
+
+.note-btn-edit {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+.note-btn-edit:hover {
+  background: #d2e3fc;
+}
+
+/* AddNote card */
+.addnote-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+}
+
+.addnote-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 18px;
+}
+
+/* ============================
+   AUTH PAGES
+============================ */
+.auth-wrapper,
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+}
+
+.auth-card,
+.profile-card {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+}
+
+.auth-title,
+.profile-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+}
+
+.auth-subtitle {
+  color: #777;
+  margin-bottom: 22px;
+  font-size: 0.9rem;
+}
+
+.auth-helper {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+/* ============================
+   PROFILE PAGE
+============================ */
+.profile-card {
+  max-width: 560px;
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-label {
+  color: #666;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.profile-value {
+  color: #1a1a1a;
+  text-align: right;
+  word-break: break-word;
+  font-size: 0.95rem;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+  .app-shell {
+    padding-top: 0.75rem;
+  }
+
+  .hero-section {
+    padding: 48px 16px 40px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .auth-card,
+  .profile-card {
+    padding: 22px 18px;
+  }
+
+  .how-step-arrow {
+    display: none;
+  }
+
+  .how-steps {
+    gap: 20px;
+  }
+}

@@ -1,5 +1,5 @@
 import NoteContext from "./noteContext";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const NoteState = (props) => {
   const host = "http://localhost:5000";
@@ -7,7 +7,7 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState(notesInitial);
 
   // Get all Notes
-  const getNotes = async () => {
+  const getNotes = useCallback(async () => {
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
@@ -18,7 +18,7 @@ const NoteState = (props) => {
     const getnotes = await response.json();
     console.log(getnotes);
     setNotes(getnotes);
-  };
+  }, [host]);
 
   // Add a Note
   const addNote = async (title, description, tag) => {

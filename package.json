@@ -1,30 +1,16 @@
 {
-  "name": "inotepad",
+  "name": "inotebook-workspace",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "both": "concurrently \"npm run dev\" \"nodemon backend/index.js\""
-  },
-  "dependencies": {
-    "concurrently": "^9.2.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.10.1"
+    "dev": "concurrently \"npm run dev --prefix Backend\" \"npm run dev --prefix Client\"",
+    "dev:backend": "npm run dev --prefix Backend",
+    "dev:client": "npm run dev --prefix Client",
+    "build": "npm run build --prefix Client",
+    "lint": "npm run lint --prefix Client",
+    "start": "npm run start --prefix Backend"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@types/react": "^19.2.5",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
-    "vite": "^7.2.4"
+    "concurrently": "^9.2.1"
   }
 }

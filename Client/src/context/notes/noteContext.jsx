@@ -3,9 +3,9 @@ import {createContext} from "react";
 const NoteContext = createContext({
     notes : [],
     setNotes: () => {},
-    addNote: (title, description, tag) => {},
-    deleteNote: (id) => {},
-    editNote: (id, title, description, tag) => {},
+    addNote: () => {},
+    deleteNote: () => {},
+    editNote: () => {},
     getNotes: () => {}
 });
 

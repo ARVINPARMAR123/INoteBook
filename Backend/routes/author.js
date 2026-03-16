@@ -11,11 +11,10 @@ const JWT_SECRET = "ThisIsASecretKey"; // Ideally, store this in an environment 
 // validation checks can be added here later using express-validator
 // ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
 router.post('/createuser', [
-    body('name', 'Enter a valid name').isLength({ min: 3 }),
+    body('name', 'Enter a valid name').isLength({ min: 3 }),    
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password must be at least 5 characters').isLength({ min: 5 }),
 ], async (req, res) => { // Added 'async'
-        console.log(req.body);
         let success = false;
         
         const errors = validationResult(req);
@@ -30,7 +29,7 @@ router.post('/createuser', [
             let user = await User.findOne({email: req.body.email});
             
             if(user){
-                return res.status(400).json({error: "Sorry a user with this email already exists"})
+                return res.status(400).json({success, error: "A user with this email already exists"})
             }
             user = await User.create({
                 name: req.body.name,
@@ -52,7 +51,7 @@ router.post('/createuser', [
     // others error occured than this msg will be shown    
     catch (error) {
         console.error(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({ success, error: "Internal Server Error" });
     }
 });
  
