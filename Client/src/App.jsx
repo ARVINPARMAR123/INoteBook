@@ -1,29 +1,27 @@
-import './App.css'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
-import NoteState from './context/notes/NoteState';
-import Alert from './components/Alert';
-import ErrorBoundary from './components/ErrorBoundary';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import Profile from './components/Profile';
-import Footer from './components/Footer';
-import { useCallback, useState } from 'react';
-import HomePage from './components/HomePage';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
+import About from "./components/About/About";
+import NoteState from "./context/notes/NoteState";
+import Alert from "./components/Alert/Alert";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
+import Profile from "./components/Profile/Profile";
+import Footer from "./components/Footer/Footer";
+import { useCallback, useState } from "react";
+import HomePage from "./components/HomePage/HomePage";
 
 const App = () => {
   const [alert, setAlert] = useState(null);
 
   const showAlert = useCallback((message, type) => {
-    setAlert({ msg: message, type: type })
-    setTimeout(() => { setAlert(null) }, 1500);
-  }, [])
+    setAlert({ msg: message, type: type });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }, []);
 
   return (
     <NoteState>
@@ -36,11 +34,23 @@ const App = () => {
               <ErrorBoundary>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route path="/home" element={<Home showAlert={showAlert} />} />
+                  <Route
+                    path="/home"
+                    element={<Home showAlert={showAlert} />}
+                  />
                   <Route path="/about" element={<About />} />
-                  <Route path="/login" element={<Login showAlert={showAlert} />} />
-                  <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
-                  <Route path="/profile" element={<Profile showAlert={showAlert} />} />
+                  <Route
+                    path="/login"
+                    element={<Login showAlert={showAlert} />}
+                  />
+                  <Route
+                    path="/signup"
+                    element={<SignUp showAlert={showAlert} />}
+                  />
+                  <Route
+                    path="/profile"
+                    element={<Profile showAlert={showAlert} />}
+                  />
                 </Routes>
               </ErrorBoundary>
             </div>
@@ -49,7 +59,7 @@ const App = () => {
         </div>
       </Router>
     </NoteState>
-  )
-}
+  );
+};
 
-export default App
+export default App;

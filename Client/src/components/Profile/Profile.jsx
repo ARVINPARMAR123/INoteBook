@@ -1,28 +1,29 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../Auth/Auth.css";
 
 const Profile = ({ showAlert }) => {
-  const host = 'http://localhost:5000';
+  const host = "http://localhost:5000";
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
-        showAlert('Please login to view your profile', 'warning');
-        navigate('/login');
+        showAlert("Please login to view your profile", "warning");
+        navigate("/login");
         setLoading(false);
         return;
       }
 
       try {
         const response = await fetch(`${host}/api/auth/getuser`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'content-type': 'application/json',
-            'auth-token': token,
+            "content-type": "application/json",
+            "auth-token": token,
           },
         });
 
@@ -30,12 +31,12 @@ const Profile = ({ showAlert }) => {
         if (response.ok && json?._id) {
           setProfile(json);
         } else {
-          const errorMessage = json?.error || 'Unable to load profile';
-          showAlert(errorMessage, 'danger');
+          const errorMessage = json?.error || "Unable to load profile";
+          showAlert(errorMessage, "danger");
         }
       } catch (error) {
         console.error(error);
-        showAlert('Unable to connect to server. Please try again.', 'danger');
+        showAlert("Unable to connect to server. Please try again.", "danger");
       } finally {
         setLoading(false);
       }
@@ -68,7 +69,9 @@ const Profile = ({ showAlert }) => {
   return (
     <div className="profile-wrapper">
       <div className="profile-card">
-        <div className="profile-avatar">{profile.name.charAt(0).toUpperCase()}</div>
+        <div className="profile-avatar">
+          {profile.name.charAt(0).toUpperCase()}
+        </div>
         <h2 className="profile-title">{profile.name}</h2>
         <p className="auth-subtitle">{profile.email}</p>
         <div className="profile-row">
@@ -81,7 +84,9 @@ const Profile = ({ showAlert }) => {
         </div>
         <div className="profile-row">
           <span className="profile-label">Member Since</span>
-          <span className="profile-value">{new Date(profile.date).toLocaleDateString()}</span>
+          <span className="profile-value">
+            {new Date(profile.date).toLocaleDateString()}
+          </span>
         </div>
       </div>
     </div>

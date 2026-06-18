@@ -1,4 +1,5 @@
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import "./Footer.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -27,14 +28,14 @@ const Footer = () => {
             Facebook
           </Link>
           <Link
-             to="https://twitter.com"
+            to="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             Twitter
           </Link>
           <Link
-             to="https://github.com"
+            to="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
           >

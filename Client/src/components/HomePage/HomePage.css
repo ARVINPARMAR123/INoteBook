@@ -1,0 +1,262 @@
+.home-container {
+  padding: 0;
+}
+
+.hero-section {
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 72px 24px 60px;
+  border-radius: 14px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e0eaff;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.hero-section .brand {
+  color: #60aeff;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  background: #007bff;
+  color: #fff;
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.hero-btn-primary:hover {
+  background: #0056b3;
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  color: #fff;
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+.features-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.features-section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.features-subtitle {
+  color: #777;
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.features-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  text-align: left;
+}
+
+.feature-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  padding: 22px 20px;
+  border-radius: 12px;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.feature-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.feature-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.how-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 40px 24px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.how-section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 32px;
+}
+
+.how-steps {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.how-step {
+  flex: 1;
+  min-width: 160px;
+  max-width: 220px;
+}
+
+.step-number {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #007bff;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.how-step h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.how-step p {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0;
+}
+
+.how-step-arrow {
+  font-size: 1.6rem;
+  color: #007bff;
+  padding-top: 10px;
+  line-height: 46px;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border-radius: 14px;
+  padding: 52px 24px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.cta-section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 26px;
+}
+
+.cta-section .hero-btn-primary {
+  background: #fff;
+  color: #007bff;
+  font-size: 1rem;
+  padding: 13px 34px;
+}
+
+.cta-section .hero-btn-primary:hover {
+  background: #f0f4ff;
+  color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 48px 16px 40px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .how-step-arrow {
+    display: none;
+  }
+
+  .how-steps {
+    gap: 20px;
+  }
+}

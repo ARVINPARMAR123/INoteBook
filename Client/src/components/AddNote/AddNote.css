@@ -1,0 +1,20 @@
+.addnote-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+}
+
+.addnote-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 768px) {
+  .addnote-card {
+    padding: 18px 16px;
+  }
+}

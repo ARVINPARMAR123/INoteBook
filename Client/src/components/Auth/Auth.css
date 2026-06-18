@@ -1,0 +1,88 @@
+.auth-wrapper,
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+}
+
+.auth-card,
+.profile-card {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+}
+
+.auth-title,
+.profile-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+}
+
+.auth-subtitle {
+  color: #777;
+  margin-bottom: 22px;
+  font-size: 0.9rem;
+}
+
+.auth-helper {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.profile-card {
+  max-width: 560px;
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-label {
+  color: #666;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.profile-value {
+  color: #1a1a1a;
+  text-align: right;
+  word-break: break-word;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .auth-card,
+  .profile-card {
+    padding: 22px 18px;
+  }
+}
